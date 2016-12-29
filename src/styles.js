@@ -65,14 +65,14 @@ const defaultTheme = {
   },
 
   DayActive : {
-    background    : '#95a5a6',
+    background    : '#4D4D4D',
     color         : '#ffffff',
     transform     : 'scale(0.9)',
   },
 
   DaySelected : {
-    background    : '#e74c3c',
-    color         : '#ffffff',
+    background    : '#4D4D4D',
+    color         : '#FFC107',
   },
 
   DayStartEdge : {
@@ -82,8 +82,8 @@ const defaultTheme = {
   },
 
   DayInRange : {
-    background    : '#34495e',
-    color         : '#95a5a6',
+    background    : '#E3E7EA',
+    color         : '#4D4D4D',
   },
 
   Weekday : {
@@ -113,10 +113,11 @@ const defaultTheme = {
     padding       : 0,
     margin        : '0 10px',
     border        : 'none',
-    background    : '#bdc3c7',
+    background    : 'transparent',
     boxShadow     : 'none',
     outline       : 'none',
     borderRadius  : '50%',
+    border        : '1px solid #9EA3A8',
   },
 
   MonthArrow : {
@@ -131,13 +132,13 @@ const defaultTheme = {
 
   MonthArrowPrev : {
     borderRightWidth : '6px',
-    borderRightColor : '#34495e',
+    borderRightColor : '#E3E7EA',
     marginLeft       : 1,
   },
 
   MonthArrowNext : {
     borderLeftWidth  : '6px',
-    borderLeftColor  : '#34495e',
+    borderLeftColor  : '#E3E7EA',
     marginLeft       : 7,
   },
 
