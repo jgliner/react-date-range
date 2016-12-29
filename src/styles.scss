@@ -12,12 +12,18 @@ $cell-size: (($calendar-width - $calendar-padding * 2) / 7) - ($cell-margin * 2)
 $calendar-shadow: rgba($calendar-color, 0.25) 0 0 1em !default;
 
 .rdr-DateRange {
-    display: block;
     box-sizing: border-box;
     white-space: nowrap;
     border-radius: 2px;
     background: $calendar-background;
     box-shadow: $calendar-shadow;
+
+    &.visible {
+        display: block;
+    }
+    &.collapsed {
+        display: none;
+    }
 
     .rdr-Calendar {
         box-shadow: none;

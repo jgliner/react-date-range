@@ -18,6 +18,22 @@ export default class Main extends Component {
       'datePicker' : null,
       'firstDayOfWeek' : null,
       'predefined' : {},
+      'dateRangeCollapsed': true,
+    }
+
+    this.collapseAll = this.collapseAll.bind(this);
+  }
+
+  componentDidMount() {
+    document.getElementById('root').addEventListener('click', this.collapseAll);
+  }
+
+  collapseAll(e) {
+    const dropdown = document.getElementsByClassName('dropdown')[0];
+    if (!dropdown.contains(e.target)) {
+      this.setState({
+        dateRangeCollapsed: true,
+      });
     }
   }
 
@@ -30,7 +46,6 @@ export default class Main extends Component {
   render() {
     const { rangePicker, linked, datePicker, firstDayOfWeek, predefined} = this.state;
     const format = 'dddd, D MMMM YYYY';
-
     return (
       <main className={styles['Main']}>
 
@@ -212,6 +227,36 @@ export default class Main extends Component {
           />
         </Section>
 
+        <Section title='Dropdown Range Picker'>
+          <div className={styles['Dropdown-Input']}>
+            <input
+              type='text'
+              readOnly
+              value={ rangePicker['startDate'] && rangePicker['startDate'].format(format).toString() }
+              onClick={ this.handleChange.bind(this, 'dateRangeCollapsed', !this.state.dateRangeCollapsed) }
+            />
+            <input
+              type='text'
+              readOnly
+              value={ rangePicker['endDate'] && rangePicker['endDate'].format(format).toString() }
+              onClick={ this.handleChange.bind(this, 'dateRangeCollapsed', !this.state.dateRangeCollapsed) }
+            />
+          </div>
+          <div className={`${styles['Dropdown-Range-Container']} dropdown`}>
+            <div className={styles['Dropdown-Range']}>
+              <DateRange
+                startDate='10/11/2015'
+                endDate={ now => {
+                  return '11/12/2015';
+                }}
+                onInit={ this.handleChange.bind(this, 'rangePicker') }
+                onChange={ this.handleChange.bind(this, 'rangePicker') }
+                collapsed={this.state.dateRangeCollapsed}
+              />
+            </div>
+          </div>
+        </Section>
+
         <Section title='Mobile Datepicker'>
           <div>
             <input
@@ -239,6 +284,7 @@ export default class Main extends Component {
             />
           </div>
         </Section>
+
       </main>
     )
   }

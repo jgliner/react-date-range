@@ -23,7 +23,6 @@ export const defaultClasses = {
 
 const defaultTheme = {
   DateRange : {
-    display       : 'block',
     boxSizing     : 'border-box',
     background    : '#ffffff',
     borderRadius  : '2px',
